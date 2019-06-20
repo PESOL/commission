@@ -47,7 +47,7 @@ class Settlement(models.Model):
 
     @api.multi
     def action_cancel(self):
-        if any(x.state != 'settled' for x in self):
+        if any(x.invoice for x in self):
             raise exceptions.Warning(
                 _('Cannot cancel an invoiced settlement.'))
         self.write({'state': 'cancel'})

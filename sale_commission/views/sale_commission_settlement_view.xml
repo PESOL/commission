@@ -51,7 +51,7 @@
                             type="object"
                             name="action_invoice" />
                     <button string="Cancel"
-                            states="settled"
+                            attrs="{'invisible': [('state', 'not in', ['settled', 'invoiced']), ('invoice', '!=', False)]}"
                             type="object"
                             name="action_cancel" />
                     <field name="state" widget="statusbar"/>
